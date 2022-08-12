@@ -14,6 +14,8 @@ local on_attach = function(client, bufnr)
   end
 end
 
+nvim_lsp.tailwindcss.setup{}
+
 -- TypeScript
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
