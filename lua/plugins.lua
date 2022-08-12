@@ -23,4 +23,10 @@ packer.startup(function(use)
     }
     use 'airblade/vim-gitgutter'
     use 'mfussenegger/nvim-jdtls'
+    use {
+        "junegunn/fzf.vim",
+        requires = {
+            "junegunn/fzf", run = ":call fzf#install()"
+        }
+    }
 end)
