@@ -16,8 +16,10 @@ packer.startup(function(use)
     use 'onsails/lspkind-nvim' -- vscode like pictograms for autocomplete
     use 'hrsh7th/cmp-buffer' -- source for buiffer words
     use 'hrsh7th/cmp-nvim-lsp' -- autcomplete source for native lsp
+    use 'hrsh7th/cmp-nvim-lsp-signature-help' -- method signature help
     use 'hrsh7th/nvim-cmp' -- autocompletion
     use 'neovim/nvim-lspconfig' -- LSP
+    use 'windwp/nvim-ts-autotag' -- auto close html tags
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
