@@ -8,4 +8,6 @@ end
 
 map("n", "<C-k>", ":Files<CR>", { silent = true })
 map("n", "<C-j>", ":Trouble document_diagnostics<CR>", { silent = true })
+map("n", "<M>", ":bnext<CR>")
+map("n", "<N>", ":bprevious<CR>")
 
