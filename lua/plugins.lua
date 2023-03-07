@@ -41,4 +41,6 @@ packer.startup(function(use)
         requires = "kyazdani42/nvim-web-devicons",
     }
     use 'lervag/vimtex'
+    use 'vim-airline/vim-airline'
+    use 'tpope/vim-fugitive' 
 end)
