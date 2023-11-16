@@ -17,4 +17,4 @@ vim.opt.background = 'dark'
 vim.opt.re=0
 vim.opt.pumheight=10
 vim.opt.mouse="nicr"
-vim.opt.colorcolumn="80"
+vim.opt.colorcolumn="120"
