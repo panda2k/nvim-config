@@ -11,7 +11,7 @@ map("n", "<C-v>", ":bnext<CR>", { silent = true })
 map("n", "<C-c>", ":bprev<CR>", { silent = true })
 map("n", "<C-x>", ":bd<CR>", { silent = true })
 map("n", "<C-l>", ":Rg<CR>", { silent = true})
-map("n", "<C-j>", ":Trouble document_diagnostics<CR>", { silent = true })
+map("n", "<C-j>", ":Trouble diagnostics toggle focus=true filter.buf=0<CR>", { silent = true })
 map("n", "<M>", ":bnext<CR>")
 map("n", "<N>", ":bprevious<CR>")
 
