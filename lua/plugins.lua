@@ -1,46 +1,51 @@
-local status, packer = pcall(require, 'packer')
-if (not status) then 
-    print("Packer is not installed")
-    return
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-vim.cmd [[packadd packer.nvim]]
-packer.startup(function(use)
-    use 'wbthomason/packer.nvim'
-    use 'wakatime/vim-wakatime'
-    use {
+require('lazy').setup({
+    'wakatime/vim-wakatime',
+    {
         'svrana/neosolarized.nvim',
-        requires = { 'tjdevries/colorbuddy.nvim' }
-    }
-    use 'L3MON4D3/LuaSnip' -- snippets for cmp
-    use 'onsails/lspkind-nvim' -- vscode like pictograms for autocomplete
-    use 'hrsh7th/cmp-buffer' -- source for buiffer words
-    use 'hrsh7th/cmp-nvim-lsp' -- autcomplete source for native lsp
-    use 'hrsh7th/cmp-nvim-lsp-signature-help' -- method signature help
-    use 'hrsh7th/nvim-cmp' -- autocompletion
-    use 'neovim/nvim-lspconfig' -- LSP
-    use 'windwp/nvim-ts-autotag' -- auto close html tags
-    use {
+        dependencies = { 'tjdevries/colorbuddy.nvim' }
+    },
+    'L3MON4D3/LuaSnip', -- snippets for cmp
+    'onsails/lspkind-nvim', -- vscode like pictograms for autocomplete
+    'hrsh7th/cmp-buffer', -- source for buiffer words
+    'hrsh7th/cmp-nvim-lsp', -- autcomplete source for native lsp
+    'hrsh7th/cmp-nvim-lsp-signature-help', -- method signature help
+    'hrsh7th/nvim-cmp', -- autocompletion
+    'neovim/nvim-lspconfig', -- LSP
+    'windwp/nvim-ts-autotag', -- auto close html tags
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
-    use 'airblade/vim-gitgutter'
-    use 'mfussenegger/nvim-jdtls'
-    use {
+        build = ':TSUpdate'
+    },
+    'airblade/vim-gitgutter',
+    'mfussenegger/nvim-jdtls',
+    {
         "junegunn/fzf.vim",
-        requires = {
-            "junegunn/fzf", run = ":call fzf#install()"
+        dependencies = {
+            "junegunn/fzf", build = ":call fzf#install()"
         }
-    }
-    use({
+    },
+    {
         "iamcco/markdown-preview.nvim",
-        run = function() vim.fn["mkdp#util#install"]() end,
-    })
-    use {
+        build = function() vim.fn["mkdp#util#install"]() end,
+    },
+    {
         "folke/trouble.nvim",
-        requires = "kyazdani42/nvim-web-devicons",
-    }
-    use 'lervag/vimtex'
-    use 'vim-airline/vim-airline'
-    use 'tpope/vim-fugitive' 
-end)
+        dependencies = "kyazdani42/nvim-web-devicons",
+    },
+    'lervag/vimtex',
+    'vim-airline/vim-airline',
+    'tpope/vim-fugitive',
+})
